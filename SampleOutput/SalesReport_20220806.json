@@ -1,0 +1,18 @@
+[
+    {
+        "Id": "5c8b9a05-580d-4fd7-ba39-153da3c304cf",
+        "StoreId": 3004,
+        "TotalItems": 6.00,
+        "TotalAmount": 88561.30,
+        "TotalReceipts": 6,
+        "Date": "2022-08-06T00:00:00+03:00"
+    },
+    {
+        "Id": "aa9131c3-871d-4b26-9ccc-d9dac9269fb3",
+        "StoreId": 3000,
+        "TotalItems": 7.00,
+        "TotalAmount": 926.30,
+        "TotalReceipts": 7,
+        "Date": "2022-08-06T00:00:00+03:00"
+    }
+]

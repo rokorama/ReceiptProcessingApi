@@ -42,7 +42,7 @@ public class DailyReportGenerationJob : BackgroundService
     public void SaveDailyReportsToJson(List<DailySalesReport> reports)
     {
         var date = DateTime.Now.AddDays(-1).ToString("yyyyMMdd");
-        using StreamWriter file = File.AppendText($"SampleOutput/SalesReport_{date}.json");
+        using StreamWriter file = File.AppendText($"../SampleOutput/SalesReport_{date}.json");
         JsonSerializer serializer = new JsonSerializer();
         serializer.Serialize(file, reports);
     }
