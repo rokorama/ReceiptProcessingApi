@@ -1,4 +1,9 @@
 using System.Xml.Linq;
+using salesdata_api.Helpers;
+using salesdata_api.Models;
+using salesdata_api.Repositories;
+
+namespace salesdata_api.Services;
 
 public class ReceiptDataService : IReceiptDataService
 {

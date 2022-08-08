@@ -1,3 +1,7 @@
+using salesdata_api.Models;
+
+namespace salesdata_api.Repositories;
+
 public class DailyReportRepository : IDailyReportRepository
 {
     private readonly AppDbContext _dbContext;

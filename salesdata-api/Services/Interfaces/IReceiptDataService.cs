@@ -1,4 +1,7 @@
 using System.Xml.Linq;
+using salesdata_api.Models;
+
+namespace salesdata_api.Services;
 
 public interface IReceiptDataService
 {

@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using salesdata_api.Repositories;
+using salesdata_api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,3 +1,7 @@
+using salesdata_api.Models;
+
+namespace salesdata_api.Repositories;
+
 public interface IReceiptDataRepository
 {
     public bool SaveDailyReport(DailySalesReport report);

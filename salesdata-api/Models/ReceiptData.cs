@@ -1,3 +1,5 @@
+namespace salesdata_api.Models;
+
 public class ReceiptData
 {
     public Guid Id { get; set; }

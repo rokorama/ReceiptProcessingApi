@@ -1,3 +1,8 @@
+using salesdata_api.Models;
+using salesdata_api.Repositories;
+
+namespace salesdata_api.Services;
+
 public class DailyReportService : IDailyReportService
 {
     private readonly IDailyReportRepository _reportRepo;

@@ -1,3 +1,7 @@
+using salesdata_api.Models;
+
+namespace salesdata_api.Repositories;
+
 public class ReceiptDataRepository : IReceiptDataRepository
 {
     private readonly AppDbContext _dbContext;

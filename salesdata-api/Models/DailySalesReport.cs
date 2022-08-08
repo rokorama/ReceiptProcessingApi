@@ -1,3 +1,5 @@
+namespace salesdata_api.Models;
+
 public class DailySalesReport
 {
     public Guid Id { get; set; }

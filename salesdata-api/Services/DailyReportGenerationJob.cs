@@ -1,5 +1,9 @@
 using Cronos;
 using Newtonsoft.Json;
+using salesdata_api.Models;
+using salesdata_api.Repositories;
+
+namespace salesdata_api.Services;
 
 public class DailyReportGenerationJob : BackgroundService
 {

@@ -1,3 +1,5 @@
+namespace salesdata_api.Models;
+
 public class DateRangeSearchResult
 {
     public int StoreId { get; set; }

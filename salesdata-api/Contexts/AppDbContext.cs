@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using salesdata_api.Models;
 
 public class AppDbContext : DbContext
 {
