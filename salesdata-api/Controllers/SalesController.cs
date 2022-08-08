@@ -38,7 +38,7 @@ public class SalesController : ControllerBase
             _dailyReportService.SaveDailyReportsToDb(reports);
         }
 
-        return Ok();
+        return Ok(reports);
     }
 
     [HttpGet("Receipt/{receiptId}")]
@@ -48,7 +48,7 @@ public class SalesController : ControllerBase
         return (result is not null) ? Ok(result) : NotFound();
     }
 
-    [HttpGet("Report")]
+    [HttpGet("ReportsFromRange")]
     public ActionResult<List<DateRangeSearchResult>> GetReportsFromPeriod(DateTime startDate, DateTime endDate)
     {
         if (endDate < startDate)
