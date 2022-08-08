@@ -28,6 +28,19 @@ public class SalesController : ControllerBase
         return (success is true) ? Ok() : BadRequest();
     }
 
+    [HttpGet("DailyReports")]
+    public ActionResult GenerateDailyReports()
+    {
+        var reports = _dailyReportService.GenerateReportsFromReceipts();
+        if (reports is not null)
+        {
+            _dailyReportService.SaveDailyReportsToJson(reports);
+            _dailyReportService.SaveDailyReportsToDb(reports);
+        }
+
+        return Ok();
+    }
+
     [HttpGet("Receipt/{receiptId}")]
     public ActionResult<ReceiptData> GetReceiptData([FromRoute]int receiptId)
     {

@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using salesdata_api.Models;
 using salesdata_api.Repositories;
 
@@ -6,10 +7,12 @@ namespace salesdata_api.Services;
 public class DailyReportService : IDailyReportService
 {
     private readonly IDailyReportRepository _reportRepo;
+    private readonly IReceiptDataRepository _receiptRepo;
 
-    public DailyReportService(IDailyReportRepository reportRepo)
+    public DailyReportService(IDailyReportRepository reportRepo, IReceiptDataRepository receiptRepo)
     {
         _reportRepo = reportRepo;
+        _receiptRepo = receiptRepo;
     }
 
     public List<DateRangeSearchResult> GetReportsFromPeriod(DateTime startDate, DateTime endDate)
@@ -34,8 +37,9 @@ public class DailyReportService : IDailyReportService
         return searchResults;
     }
 
-    public List<DailySalesReport> GenerateReportFromReceipts(List<ReceiptData> receipts)
+    public List<DailySalesReport> GenerateReportsFromReceipts()
     {
+        var receipts = _receiptRepo.GetReceipts(DateTime.Today.AddDays(-1));
         var groupedData = receipts.GroupBy(r => r.StoreId);
         List<DailySalesReport> result = new List<DailySalesReport>();
 
@@ -54,8 +58,20 @@ public class DailyReportService : IDailyReportService
             result.Add(report);
         }
 
-        
-
         return result;
     }
+
+    public void SaveDailyReportsToJson(List<DailySalesReport> reports)
+    {
+        var date = DateTime.Now.AddDays(-1).ToString("yyyyMMdd");
+        using StreamWriter file = File.AppendText($"../SampleOutput/SalesReport_{date}.json");
+        JsonSerializer serializer = new JsonSerializer();
+        serializer.Serialize(file, reports);
+    }
+
+    public bool SaveDailyReportsToDb(List<DailySalesReport> reports)
+    {
+        return _reportRepo.SaveReports(reports);
+    }
+
 }
