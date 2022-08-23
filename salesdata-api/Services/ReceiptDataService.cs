@@ -16,6 +16,8 @@ public class ReceiptDataService : IReceiptDataService
 
     public bool ProcessReceipt(XElement receipt)
     {
+        if (!ValidateNamespace(receipt))
+            return false;
         var processedData = XmlParser.ProcessReceiptXml(receipt);
         return SaveToDb(processedData);
     }
@@ -33,5 +35,10 @@ public class ReceiptDataService : IReceiptDataService
     public List<ReceiptData> GetTodaysReceipts()
     {
         return _receiptRepo.GetReceipts(DateTime.Today.AddDays(-1));
+    }
+    
+    public bool ValidateNamespace(XElement receipt)
+    {
+        return receipt.Name.LocalName == "POSLog" ? true : false;
     }
 }

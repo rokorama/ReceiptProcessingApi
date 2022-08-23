@@ -24,6 +24,7 @@ public class SalesController : ControllerBase
     [Consumes("application/xml")]
     public ActionResult ProcessReceipt([FromBody]XElement receipt)
     {
+        
         var success = _receiptService.ProcessReceipt(receipt);
         return (success is true) ? Ok() : BadRequest();
     }
